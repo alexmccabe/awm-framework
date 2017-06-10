@@ -1,0 +1,9 @@
+/**
+ * Remove units from a given value
+ * [2.5em] => [2.5]
+ * @param  {string} $target Value you want to remove unit from
+ * @return {integer}
+ */
+@function remove-unit($target) {
+    @return $target / ($target * 0 + 1);
+}

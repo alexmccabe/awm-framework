@@ -18,3 +18,16 @@
  * has mostly been aliased from within './build/webpack.base.conf.js'.
  *     - @import '~styles/includes';
  */
+
+@import 'config/grid',
+        'config/breakpoints',
+        'config/fonts',
+        'config/theme';
+
+@import 'extends/all';
+@import 'functions/all';
+@import 'mixins/all';
+
+@import 'grid/functions',
+        'grid/mixins';
+

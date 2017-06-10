@@ -1,30 +1,33 @@
+<!-- By default, this should be kept very light. This is the wrapper around our website / application -->
 <template>
-  <div id="app">
-    <img src="./assets/logo.png">
-    <hello></hello>
-  </div>
+    <div class="site">
+        <!-- <hello></hello> -->
+    </div>
 </template>
 
 <script>
-import Hello from './components/Hello'
+    // import Hello from './components/Hello'
+    import {HTTP} from './http/http-common.js';
 
-export default {
-  name: 'app',
-  components: {
-    Hello
-  }
-}
+    export default {
+        name: 'app',
+        components: {
+            // Hello
+        },
+
+        data () {
+            return {
+                jokes: []
+            }
+        },
+
+        mounted () {
+            // HTTP.get('/jokes/random/10')
+            //   .then(response => this.jokes = response.data.value);
+        }
+    }
 </script>
 
 <style lang="scss">
-@import '~styles/global.scss';
-
-#app {
-  font-family: 'Avenir', Helvetica, Arial, sans-serif;
-  -webkit-font-smoothing: antialiased;
-  -moz-osx-font-smoothing: grayscale;
-  text-align: center;
-  color: #2c3e50;
-  margin-top: 60px;
-}
+    @import '~styles/global.scss';
 </style>

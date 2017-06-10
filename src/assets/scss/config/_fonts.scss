@@ -1,0 +1,17 @@
+$font-weight-extra-light: 100;
+$font-weight-light: 200;
+$font-weight-regular: 400;
+$font-weight-bold: 600;
+$font-weight-heavy: 700;
+
+$base-font-family: Helvetica, "Gill Sans", Candara, Optima, Helvetica, Arial, sans-serif;
+$base-font-weight: $font-weight-regular;
+$base-font-size: 16px;
+$base-line-height: 1.35;
+
+$heading-font-family: Helvetica, Arial, sans-serif;
+$heading-font-weight: $font-weight-light;
+$heading-line-height: 1.1;
+
+$quote-font-family: $heading-font-family;
+$quote-line-height: $base-line-height + .3;

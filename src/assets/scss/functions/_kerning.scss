@@ -1,0 +1,10 @@
+/**
+ * Convert a Photoshop letter tracking number into a value that the web can
+ * understand.
+ * @param  {integer} $ps-letter-tracking An integer or float number from the
+ *                                       Photoshop letter tracking input.
+ * @return {string}                      An em value based on the current font.
+ */
+@function kerning($ps-letter-tracking) {
+    @return ($ps-letter-tracking / 1000) * 1em;
+}

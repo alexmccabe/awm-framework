@@ -1,0 +1,53 @@
+// Use these following functions ad-hoc when you need to build a grid in
+// pure CSS. This will work without classes on DOM elements.
+
+/**
+ * Define the element as a row when included
+ * @return {void}
+ */
+@mixin row() {
+    @extend %clearfix;
+
+    margin-left: (row-margin() / 2);
+    margin-right: (row-margin() / 2);
+    margin-top: (row-margin() / 2);
+
+    &--tighter-columns {
+        margin-left: (row-margin() / 4);
+        margin-right: (row-margin() / 4);
+        margin-top: (row-margin() / 4);
+    }
+
+    &--wider-columns {
+        margin-left: row-margin();
+        margin-right: row-margin();
+        margin-top: row-margin();
+    }
+}
+
+/**
+ * Define the element as a column when included
+ * @param  {integer} $col-span How many columns wide should the element be
+ * @param  {integer} $width    [Optional] Context for the calculations
+ * @return {void}
+ */
+@mixin column($col-span, $width: $max-width) {
+    margin: 0;
+    padding: (column-padding() / 2);
+    width: column-width($col-span, $width: $max-width);
+
+    .row--tighter-columns & { padding: (column-padding() / 4); }
+    .row--wider-columns & { padding: column-padding(); }
+}
+
+/**
+ * Define the element as a column when included, then center it in container
+ * @param  {integer} $col-span How many columns wide should the element be
+ * @param  {integer} $width    [Optional] Context for the calculations
+ * @return {void}
+ */
+@mixin column-center($col-span, $width: $max-width) {
+    @include column-width($col-span, $width: $max-width);
+    float: none;
+    margin: 0 auto;
+}

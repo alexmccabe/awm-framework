@@ -7,3 +7,19 @@
  */
 
 @import './includes';
+
+@import './libs/reset';
+
+@import './grid/build';
+
+@include build-grid();
+
+body {
+    @include breakpoint(1000px, 1200px) {
+        background-color: blue;
+    }
+
+    @include breakpoint(1200px) {
+        background-color: red;
+    }
+}

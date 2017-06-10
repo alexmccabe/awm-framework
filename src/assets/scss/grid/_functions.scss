@@ -1,0 +1,22 @@
+/**
+ * Calculate the width of a column based on the width of the container
+ * @param  {integer} $col-span [description]
+ * @param  {integer} $col-span How many columns wide should the element be
+ * @param  {integer} $width    [Optional] Context for the calculations
+ * @param  {boolean} $fixed    Generate a fixed-width value
+ * @return {string}            px or % value based on $fixed
+ */
+@function column-width($col-span, $width: $max-width) {
+    $max-container-width: remove-unit($width);
+    $single-column: ($max-container-width / $number-of-columns);
+
+    @return percentage(($single-column / $max-container-width) * $col-span);
+}
+
+@function column-padding($gutter-width: $gutter) {
+    @return ($gutter-width);
+}
+
+@function row-margin($gutter-width: $gutter) {
+    @return (column-padding($gutter-width) * -1)
+}
