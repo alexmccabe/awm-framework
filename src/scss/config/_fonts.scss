@@ -7,10 +7,12 @@ $font-weight-heavy: 700;
 $base-font-family: Helvetica, "Gill Sans", Candara, Optima, Helvetica, Arial, sans-serif;
 $base-font-weight: $font-weight-regular;
 $base-font-size: 16px;
+$base-letter-spacing: kerning(10);
 $base-line-height: 1.35;
 
 $heading-font-family: Helvetica, Arial, sans-serif;
 $heading-font-weight: $font-weight-light;
+$heading-letter-spacing: kerning(20);
 $heading-line-height: 1.1;
 
 $quote-font-family: $heading-font-family;
