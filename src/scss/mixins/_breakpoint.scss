@@ -1,0 +1,43 @@
+@import '../config/breakpoints';
+
+@mixin breakpoint($point-min, $point-max: 0) {
+    // Accept both a string representing the brekapoint from $breakpoints,
+    // but also a numeric value
+    @if map-has-key($breakpoints, $point-min) {
+        $point-min: map-get($breakpoints, $point-min);
+    }
+
+    @if map-has-key($breakpoints, $point-max) {
+        $point-max: map-get($breakpoints, $point-max);
+    }
+
+    $min-unit: unit($point-min);
+    $max-unit: unit($point-max);
+
+    @if $min-unit == '%' {
+        @error 'Percentage units not allowed';
+    }
+
+    @if $min-unit == 'px' {
+        $point-min: pxtoem($point-min);
+    }
+
+    @if $max-unit == 'px' {
+        $point-max: pxtoem($point-max);
+    }
+
+    // Fix em units so that it is definitely less than a min-width of the next breakpoint. This stops overlapping styles.
+    @if $point-max > 0 {
+        $point-max: $point-max - pxtoem(1);
+    }
+
+    @if $point-max > 0 {
+        @media (min-width: $point-min) and (max-width: $point-max) {
+            @content;
+        }
+    } @else {
+        @media (min-width: $point-min) {
+            @content;
+        }
+    }
+}

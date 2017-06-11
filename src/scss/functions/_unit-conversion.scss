@@ -1,0 +1,53 @@
+@import './remove-unit';
+@import '..//config/fonts';
+
+/**
+ * Convert from a px value to an em value.
+ * @param  {string} $input
+ * @return {string}        Shiny new em value
+ */
+@function pxtoem($input) {
+    $input: remove-unit($input);
+    $basis: remove-unit($base-font-size);
+
+    @return ($input / $basis) * 1em;
+}
+
+
+
+/**
+ * Convert from a px value to a rem value.
+ * @param  {string} $input
+ * @return {string}        Shiny new rem value
+ */
+@function pxtorem($input) {
+    $input: remove-unit($input);
+    $basis: remove-unit($base-font-size);
+
+    @return ($input / $basis) * 1rem;
+}
+
+
+/**
+ * Convert from a pt value to px value.
+ * @param  {string} $input
+ * @return {string}        Shiny new px value
+ */
+@function pttopx($input) {
+    $input: remove-unit($input);
+    $basis: remove-unit($base-font-size);
+
+    @return ($input * 1.3333) * 1px;
+}
+
+
+/**
+ * Convert from a pt value to an em value.
+ * @param  {string} $input
+ * @return {string}        Shiny new em value
+ */
+@function pttoem($input) {
+    $px: pttopx($input, $basis);
+
+    @return pxtoem($px, $basis);
+}
