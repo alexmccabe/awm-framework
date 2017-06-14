@@ -15,7 +15,7 @@ files.forEach(file => {
     }
 });
 
-// entry.vendor = ['jquery', 'vue'];
+entry.vendor = ['jquery'];
 
 module.exports = {
     entry: entry,
@@ -25,13 +25,10 @@ module.exports = {
 
     resolve: {
         alias: {
-            'vue$': 'vue/dist/vue.esm.js'
+            '@': path.join(__dirname, '..', 'src'),
+            'vue$': 'vue/dist/vue.esm.js',
+            jquery: 'jquery/src/jquery'
         }
-    },
-
-    externals: {
-        Vue: 'vue',
-        jquery: 'jQuery'
     },
 
     plugins: [
