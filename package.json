@@ -27,6 +27,7 @@
     "gulp-rename": "^1.2.2",
     "gulp-ruby-sass": "^2.1.1",
     "gulp-sourcemaps": "^2.6.0",
+    "gulp-uglify": "^3.0.0",
     "gulp-util": "^3.0.8",
     "vinyl-named": "^1.1.0",
     "webpack": "^2.6.1",
