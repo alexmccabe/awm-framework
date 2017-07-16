@@ -59,7 +59,7 @@ gulp.task('build:prod', gulp.series('minify:css', 'minify:js'));
 /**
  * Default task
  */
-gulp.task('default', );
+gulp.task('default', gulp.series('build:dev', 'watch'));
 
 return;
 
