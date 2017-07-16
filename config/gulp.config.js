@@ -41,6 +41,33 @@ config.js = {
     minSuffix: '.min',
 };
 
+config.fonts = {
+    in: `${config.dirs.baseDir}/fonts/**/*.{ttf,woff,woff2,eot,svg}`,
+    out: `${config.dirs.baseOutDir}/assets/fonts`,
+    clean: true,
+};
+
+config.html = {
+    in: `${config.dirs.baseDir}/html/**/*.html`,
+    out: `${config.dirs.baseOutDir}`,
+    clean: true,
+};
+
+config.images = {
+    in: `${config.dirs.baseDir}/images/**/*.{png,jpg,jpeg,gif,svg}`,
+    out: `${config.dirs.baseOutDir}/assets/images`,
+    clean: true,
+    imageMinOptions: {
+        svgo: {
+            plugins: [{
+                cleanupIDs: false
+            }]
+        }
+    }
+};
+
+
+
 config.watch = {
     browsersyncOptions: {
         // proxy: 'http://server.dev',
@@ -60,49 +87,14 @@ config.watch = {
             files: config.js.in,
             task: 'js'
         },
+
+        {
+            files: config.html.in,
+            task: 'html'
+        },
     ]
 };
 
+
 module.exports = config;
 
-
-
-
-
-
-
-
-
-// let config = {
-//     dirs: {
-//         build: 'dist',
-//         input: 'src',
-//         output: 'public',
-//         assets: '/assets',
-//     },
-
-//     scss: {
-//         lineNumbers: (env === 'development' ? true : false),
-//         sourcemap: (env === 'development' ? true : false),
-//         style: (env === 'development' ? 'expanded' : 'compressed')
-//     }
-// };
-
-
-// config.dirs.dest = (
-//     env === 'development' ? config.dirs.output : config.dirs.build
-// );
-
-// config.dirs.assetsDest = config.dirs.dest + config.dirs.assets;
-
-// config.watchFiles = {
-//     fonts: `${config.dirs.input}/fonts**/*.{ttf,woff,eof,svg}`,
-//     html: `${config.dirs.input}/**/*.html`,
-//     js: [
-//         `${config.dirs.input}/js/**/*.js`,
-//         `${config.dirs.input}/templates/**/*.vue`,
-//     ],
-//     scss: `${config.dirs.input}/scss/**/*.scss`,
-// };
-
-// module.exports = config;

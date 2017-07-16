@@ -14,7 +14,6 @@
 
 const argv        = require('yargs').argv;
 const browserSync = require('browser-sync');
-const del         = require('del');
 const glp         = require('gulp-load-plugins');
 const gulp        = require('gulp');
 const path        = require('path');
@@ -23,6 +22,8 @@ const webpackStream = require('webpack-stream');
 
 const plugins     = glp();
 const gutil       = plugins.util;
+
+const del         = require('./clean');
 
 let config = require(path.join('..', 'config/gulp.config')).js;
 let webpackConfig = require(path.join('..', 'config/webpack.config'));
@@ -47,8 +48,6 @@ function build () {
 }
 
 function clean () {
-    gutil.log(gutil.colors.magenta(`Cleaning ${config.out}`));
-
     return del([
         path.resolve(`${config.out}`)
     ]);
