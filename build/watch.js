@@ -1,5 +1,4 @@
 const browserSync = require('browser-sync').create('awm-framework');
-const glp         = require('gulp-load-plugins');
 const gulp        = require('gulp');
 const path        = require('path');
 
