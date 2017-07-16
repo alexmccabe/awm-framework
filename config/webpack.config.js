@@ -68,6 +68,8 @@ module.exports = {
         filename: '[name].js',
     },
 
+    devtool: 'source-map',
+
     resolve: {
         alias: {
             '@': path.join(__dirname, '..', 'src'),
