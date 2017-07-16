@@ -29,7 +29,10 @@ config.css = {
 };
 
 config.js = {
-    in: `${config.dirs.baseDir}/js/**/*.{js,jsx}`,
+    in: [
+        `${config.dirs.baseDir}/js/**/*.{js,jsx}`,
+        `${config.dirs.baseDir}/components/**/*.{handlebars}`,
+    ],
     out: `${config.dirs.baseOutDir}/assets/js`,
     clean: false,
 
