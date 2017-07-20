@@ -1,0 +1,36 @@
+/* ==========================================================================
+   #Utility classes
+   ========================================================================== */
+
+/**
+ * Any utility classes that aren't component specific. Each utility should
+ * be as agnostic as possible, and do very little (relatively speaking).
+ *
+ * 1. The prefix that gets applied to every utility.
+ *    Defaults to '.u-'.
+ *
+ *    Example use <div class="u-visually-hidden">Lorem ipsum dolor</div>
+ */
+
+$u-prefix: '.u-' !default; /* [1] */
+
+
+/* Visually hide the content of an element.
+   ========================================================================== */
+
+/**
+ * This renders the content invisible to browsers, but visible to
+ * screen readers. Useful for any iconography, or images where text is not
+ * imperative to the design, but impaired users should know what's on screen.
+ */
+
+#{$u-prefix}visually-hidden {
+    border: 0;
+    clip: rect(0 0 0 0);
+    height: 1px;
+    margin: -1px;
+    overflow: hidden;
+    padding: 0;
+    position: absolute;
+    width: 1px;
+}
