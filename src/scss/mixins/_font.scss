@@ -1,0 +1,25 @@
+/* ==========================================================================
+   #Font Settings
+   ========================================================================== */
+
+/**
+ * Quite often, you will have the need to include these styles to 'reset' the
+ * font on a given element. This happens most often with the heading font style.
+ *
+ * Instead of duplicated the rules by hand, these mixins provide easy access to
+ * change the styles up completely.
+ */
+
+@mixin font-base {
+    font-family: $base-font-family;
+    font-weight: $base-font-weight;
+    letter-spacing: $base-letter-spacing;
+    line-height: $base-line-height;
+}
+
+@mixin font-heading {
+    font-family: $heading-font-family;
+    font-weight: $heading-font-weight;
+    letter-spacing: $heading-letter-spacing;
+    line-height: $heading-line-height;
+}
