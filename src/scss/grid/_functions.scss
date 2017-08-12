@@ -18,5 +18,5 @@
 }
 
 @function row-margin($gutter-width: $grid-gutter) {
-    @return (column-padding($gutter-width) * -1)
+    @return (column-padding($gutter-width) * -1);
 }

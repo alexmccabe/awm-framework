@@ -5,33 +5,48 @@
 
 @mixin build-columns($size: '') {
     @for $col-num from 1 through $grid-column-count {
-        .column-#{$size}#{$col-num} {
+        .column--#{$col-num}-#{$grid-column-count}#{$size} {
             @include column($col-num);
-
-            // @if $col-num == 12 {
-            //     margin-bottom: ($grid-gutter / 2);
-
-            //     &:last-child { margin-bottom: 0; }
-            // }
         }
     }
+
+    .column__content { @include column-content; }
 }
 
 // This will build a tonne of classes that you can then put on DOM elements
 // which will change width at the defined breakpoints.
 // WARNING: This will add hundreds of lines of CSS to your output file
-@mixin build-grid() {
-    [class^='column-'] {
-        float: left;
+@mixin build-grid {
+    .row {
+        display: flex;
+
+        &--wrap-content {
+            flex-wrap: wrap;
+        }
+    }
+
+
+    .column,
+    [class^='column--'] {
+        display: block;
         min-height: 1px;
         position: relative;
     }
 
-    .row { @include row(); }
+    .column {
+        flex-basis: auto;
+        flex-grow: 1;
+        flex-shrink: 1;
+    }
+
+
+    [class*='column--'] {
+        flex: none;
+    }
 
     // Build classes without extensions, old versions of IE don't support
     // media queries
-    @include build-columns();
+    @include build-columns;
 
     // Build each version of the column for each breakpoint
     @each $point-name, $point-value in $breakpoints {

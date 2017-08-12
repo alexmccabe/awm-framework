@@ -2,33 +2,21 @@
 // pure CSS. This will work without classes on DOM elements.
 
 /**
- * Define the element as a row when included
- * @return {void}
- */
-@mixin row() {
-    @extend %clearfix;
-
-    margin-bottom: abs(row-margin() / 2);
-    margin-left: (row-margin() / 2);
-    margin-right: (row-margin() / 2);
-    // margin-top: (row-margin() / 2);
-
-    &:last-child { margin-bottom: 0; }
-}
-
-/**
  * Define the element as a column when included
  * @param  {integer} $col-span How many columns wide should the element be
  * @param  {integer} $width    [Optional] Context for the calculations
  * @return {void}
  */
 @mixin column($col-span, $width: $site-max-width) {
-    margin: 0;
-    padding: 0 (column-padding() / 2);
+    // padding: (column-padding() / 2);
     width: column-width($col-span, $width);
+}
 
-    .row--tighter-columns & { padding: 0 (column-padding() / 4); }
-    .row--wider-columns & { padding: 0 column-padding(); }
+/**
+ * Content of a column. This is completely optional.
+ */
+@mixin column-content {
+    padding: column-padding();
 }
 
 /**
