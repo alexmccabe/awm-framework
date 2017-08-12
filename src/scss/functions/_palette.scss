@@ -1,0 +1,14 @@
+/**
+ * Get a colour from the swatches by name and tone.
+ * Colours are defined in config/theme.
+ * @param  {string} $swatch-name Name of the colour to get.
+ *                               Must exist in the $swatches map.
+ * @param  {string} $tone        Which tone of colour to get.
+ *                               Accepts one of the following:
+ *                               [x-dark, dark, base, light, x-light]
+ * @return {string}              Colour value
+ * @url http://erskinedesign.com/blog/friendlier-colour-names-sass-maps/
+ */
+@function palette($swatch-name, $tone: 'base') {
+    @return map-get(map-get($swatches, $swatch-name), $tone);
+}
