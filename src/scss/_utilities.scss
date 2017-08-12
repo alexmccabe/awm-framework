@@ -1,3 +1,5 @@
+// sass-lint:disable no-important
+
 /* ==========================================================================
    #Utility classes
    ========================================================================== */
@@ -34,3 +36,39 @@ $u-prefix: '.u-' !default; /* [1] */
     position: absolute;
     width: 1px;
 }
+
+/**
+ * Clear any floats. Place this class on the parent of the floated elements.
+ */
+#{$u-prefix}clearfix {
+    @extend %clearfix;
+}
+
+
+/* Hide elements from view and screen-readers
+   ========================================================================== */
+
+/**
+ * Hide elements both visually and from screen-readers at certain breakpoints.
+ * Gives the option to hide an element when less than a breakpoint, or to hide
+ * an element when greater than a breakpoint.
+ *
+ * Example: `<div class="u-hidden-large">` will hide the `<div>` when the
+ *          window width is greater than the `large` breakpoint.
+ *          `<div class="u-hidden-less-than-large">` will hide the `<div>`
+ *          when the window width is less than the `large` breakpoint.
+ */
+
+@each $point, $value in $breakpoints {
+    @if $value > 0 {
+        #{$u-prefix}hidden-#{$point} {
+            @include breakpoint(#{$point}) { display: none !important; }
+        }
+
+        #{$u-prefix}hidden-less-than-#{$point} {
+            @include breakpoint(0, #{$point}) { display: none !important; }
+        }
+    }
+}
+
+// sass-lint:enable no-important
