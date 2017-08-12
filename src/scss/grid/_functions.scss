@@ -8,15 +8,15 @@
  */
 @function column-width($col-span, $width: $max-width) {
     $max-container-width: remove-unit($width);
-    $single-column: ($max-container-width / $number-of-columns);
+    $single-column: ($max-container-width / $grid-column-count);
 
     @return percentage(($single-column / $max-container-width) * $col-span);
 }
 
-@function column-padding($gutter-width: $gutter) {
+@function column-padding($gutter-width: $grid-gutter) {
     @return ($gutter-width);
 }
 
-@function row-margin($gutter-width: $gutter) {
+@function row-margin($gutter-width: $grid-gutter) {
     @return (column-padding($gutter-width) * -1)
 }

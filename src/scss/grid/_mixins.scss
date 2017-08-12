@@ -13,20 +13,6 @@
     margin-right: (row-margin() / 2);
     // margin-top: (row-margin() / 2);
 
-    &--tighter-columns {
-        margin-bottom: abs(row-margin() / 4);
-        margin-left: (row-margin() / 4);
-        margin-right: (row-margin() / 4);
-        // margin-top: (row-margin() / 4);
-    }
-
-    &--wider-columns {
-        margin-bottom: abs(row-margin());
-        margin-left: row-margin();
-        margin-right: row-margin();
-        // margin-top: row-margin();
-    }
-
     &:last-child { margin-bottom: 0; }
 }
 
@@ -36,10 +22,10 @@
  * @param  {integer} $width    [Optional] Context for the calculations
  * @return {void}
  */
-@mixin column($col-span, $width: $max-width) {
+@mixin column($col-span, $width: $site-max-width) {
     margin: 0;
     padding: 0 (column-padding() / 2);
-    width: column-width($col-span, $width: $max-width);
+    width: column-width($col-span, $width);
 
     .row--tighter-columns & { padding: 0 (column-padding() / 4); }
     .row--wider-columns & { padding: 0 column-padding(); }
@@ -51,8 +37,9 @@
  * @param  {integer} $width    [Optional] Context for the calculations
  * @return {void}
  */
-@mixin column-center($col-span, $width: $max-width) {
-    @include column-width($col-span, $width: $max-width);
+@mixin column-center($col-span, $width: $site-max-width) {
+    @include column-width($col-span, $width);
+
     float: none;
     margin: 0 auto;
 }
