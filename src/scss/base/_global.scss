@@ -1,0 +1,117 @@
+/* ==========================================================================
+   #Global Styles
+   ========================================================================== */
+
+/**
+ * All styles in this stylesheet are applied globally.
+ *
+ * 1. Import the grid. It's not actually built yet however.
+ *
+ * 2. All other global imports are optional. If you leave the files empty, no
+ *    styles will be added to the compiled CSS.
+ *
+ * 3. Only build the grid if specified to do so. This is set in config/grid.
+ *
+ * 4. Box-sizing the "best-practice" way
+ *    https://css-tricks.com/inheriting-box-sizing-probably-slightly-better-best-practice/
+ *
+ * 5. Switch between 'responsive' and 'adaptive' modes. Config is set in
+ *    config/breakpoints.
+ *    If $snap-to-breakpoints is true, then the container won't scale
+ *    fluidly and instead 'snap' to each breakpoint width. Sometimes this is
+ *    preferable for more rigid content. Defaults to false.
+ */
+
+
+/* Import the grid system. [1]
+   ========================================================================== */
+
+@import '../grid/build';
+
+
+/* Import other global files. [2]
+   ========================================================================== */
+
+@import 'fonts';
+@import 'icons';
+@import 'sprites';
+@import 'svg';
+
+@if ($grid-build) { /* [3] */
+    @include build-grid;
+}
+
+
+/* Actual global styles. This should be as small os possible.
+   ========================================================================== */
+
+html {
+    box-sizing: border-box;
+    height: 100%;
+}
+
+*,
+*::before,
+*::after {
+    box-sizing: inherit; /* [4] */
+}
+
+
+// sass-lint:disable no-vendor-prefixes
+::selection {
+    background: $swatch-primary;
+    color: $swatch-white;
+}
+
+::-moz-selection {
+    background: $swatch-primary;
+    color: $swatch-white;
+}
+// sass-lint:enable no-vendor-prefixes
+
+
+/* The global site container. Usually the <body> element. Use only once.
+   ========================================================================== */
+
+.site {
+    @include font-base;
+
+    background-color: $swatch-white;
+    color: $swatch-black;
+    font-size: 1rem;
+    min-height: 100%;
+    min-width: $site-min-width;
+}
+
+
+/* Content container. Can be used anywhere. DO NOT NEST.
+   ========================================================================== */
+
+.container {
+    margin-left: auto;
+    margin-right: auto;
+    position: relative;
+    width: 100%;
+
+    /* [5] */
+    @if ($snap-to-breakpoints == true) {
+        @each $point-name, $point-value in $breakpoints {
+            @include breakpoint($point-name) {
+                @if ($point-value > pxtoem(376)) {
+                    width: $point-value;
+                }
+            }
+        }
+    } @else {
+        max-width: pxtoem($site-max-width);
+    }
+}
+
+
+/* Other general styles that don't belong anywhere else.
+   ========================================================================== */
+
+.image {
+    display: block;
+    width: 100%;
+}
