@@ -8,7 +8,7 @@ $breakpoints: (
     medium: 50em,
     large: 64em,
     x-large: 70em,
-    max: pxtoem($max-width)
+    max: pxtoem($site-max-width)
 );
 
 /**
@@ -18,4 +18,4 @@ $breakpoints: (
  * a completely fluid layout, if you want.
  * @type {Boolean}
  */
-$snap-to-breakpoints: false;
+$snap-to-breakpoints: true;
