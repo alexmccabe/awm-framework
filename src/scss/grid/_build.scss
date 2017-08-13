@@ -19,9 +19,10 @@
 @mixin build-grid {
     .row {
         display: flex;
+        flex-wrap: wrap;
 
-        &--wrap-content {
-            flex-wrap: wrap;
+        &--no-wrap {
+            flex-wrap: nowrap;
         }
     }
 
