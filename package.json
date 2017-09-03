@@ -4,7 +4,8 @@
   "description": "",
   "main": "index.js",
   "scripts": {
-    "dev": "webpack"
+    "dev": "gulp",
+    "build": "gulp build:production --production"
   },
   "keywords": [],
   "author": "",
@@ -26,7 +27,6 @@
     "gulp-plumber": "^1.1.0",
     "gulp-rename": "^1.2.2",
     "gulp-ruby-sass": "^2.1.1",
-    "gulp-sourcemaps": "^2.6.0",
     "gulp-uglify": "^3.0.0",
     "gulp-util": "^3.0.8",
     "vinyl-named": "^1.1.0",
@@ -34,5 +34,15 @@
     "webpack-stream": "^3.2.0",
     "yargs": "^8.0.2"
   },
-  "dependencies": {}
+  "dependencies": {
+    "eslint": "^4.5.0",
+    "global": "^4.3.2",
+    "gulp-cli": "^1.4.0",
+    "gulp-if": "^2.0.2",
+    "gulp-rev": "^8.0.0",
+    "gulp-rev-collector": "^1.2.2",
+    "gulp-sourcemaps": "^2.6.1",
+    "transfob": "^1.0.0",
+    "vinyl-map2": "^1.2.1"
+  }
 }

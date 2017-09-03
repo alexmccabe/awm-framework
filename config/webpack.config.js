@@ -1,8 +1,10 @@
-/*jslint*/
 /*global __dirname*/
-const path = require('path');
-const glob = require('glob');
+const argv    = require('yargs').argv;
+const path    = require('path');
+const glob    = require('glob');
 const webpack = require('webpack');
+
+let isProduction = !!argv.production;
 
 let config = {
     /**
@@ -109,7 +111,13 @@ module.exports = {
             name: 'vendor',
             filename: 'vendor.bundle.js',
             minChunks: 2
-        })
+        }),
+
+        // new webpack.optimize.UglifyJsPlugin({
+        //     minimize: (isProduction) ? true : false,
+        //     compress: (isProduction) ? true : false,
+        //     sourceMap: true
+        // })
     ],
 
     module: {

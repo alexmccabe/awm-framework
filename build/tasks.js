@@ -1,6 +1,6 @@
 module.exports = {
     css: require('./css'),
-    js: require('./js'),
+    js: require('./scripts'),
     watch: require('./watch'),
     fonts: require('./static-files').fonts,
     html: require('./static-files').html,

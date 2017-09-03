@@ -33,8 +33,9 @@ module.exports = {
     html () {
 
         function compile () {
-            let stream = gulp.src(config.html.in)
-                .pipe(gulp.dest(config.html.out));
+            let stream = gulp.src(config.html.in);
+
+            stream.pipe(gulp.dest(config.html.out));
 
             if (browserSync.has('awm-framework')) {
                 browserSync.get('awm-framework').reload();

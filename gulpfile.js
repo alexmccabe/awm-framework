@@ -31,9 +31,9 @@ gulp.task('minify:css',
  */
 gulp.task('js', tasks.js.build);
 gulp.task('clean:js', tasks.js.clean);
-gulp.task('minify:js',
-    gulp.series('clean:js', 'js', tasks.js.minify)
-);
+// gulp.task('minify:js',
+//     gulp.series('clean:js', 'js', tasks.js.minify)
+// );
 
 /**
  * Static file tasks
@@ -48,7 +48,7 @@ gulp.task('static', gulp.series('fonts', 'html', 'images'));
  * Build tasks
  */
 gulp.task('build:dev', gulp.series('static', 'css', 'js'));
-gulp.task('build:prod', gulp.series('static', 'minify:css', 'minify:js'));
+gulp.task('build:production', gulp.series('js', 'minify:css', 'static'));
 
 /**
  * Default task
