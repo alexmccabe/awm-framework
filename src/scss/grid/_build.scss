@@ -8,6 +8,10 @@
         .column--#{$col-num}-#{$grid-column-count}#{$size} {
             @include column($col-num);
         }
+
+        .offset--#{$col-num}-#{$grid-column-count}#{$size} {
+            @include column-offset($col-num);
+        }
     }
 
     .column__content { @include column-content; }

@@ -13,6 +13,16 @@
 }
 
 /**
+ * Define the element as a column offset when included
+ * @param  {integer} $col-span How many columns wide should the offset be
+ * @param  {integer} $width    [Optional] Context for the calculations
+ * @return {void}
+ */
+@mixin column-offset($col-span, $width: $site-max-width) {
+    margin-left: column-width($col-span, $width);
+}
+
+/**
  * Content of a column. This is completely optional.
  */
 @mixin column-content {
