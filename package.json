@@ -43,6 +43,7 @@
     "gulp-rev-collector": "^1.2.2",
     "gulp-sourcemaps": "^2.6.1",
     "transfob": "^1.0.0",
-    "vinyl-map2": "^1.2.1"
+    "vinyl-map2": "^1.2.1",
+    "vinyl-paths": "^2.1.0"
   }
 }

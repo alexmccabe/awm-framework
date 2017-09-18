@@ -113,11 +113,11 @@ module.exports = {
             minChunks: 2
         }),
 
-        // new webpack.optimize.UglifyJsPlugin({
-        //     minimize: (isProduction) ? true : false,
-        //     compress: (isProduction) ? true : false,
-        //     sourceMap: true
-        // })
+        new webpack.optimize.UglifyJsPlugin({
+            minimize: (isProduction) ? true : false,
+            compress: (isProduction) ? true : false,
+            sourceMap: true
+        })
     ],
 
     module: {

@@ -42,7 +42,7 @@ config.css = {
     minSuffix: '.min',
 };
 
-config.js = {
+config.scripts = {
     in: [
         `${config.dirs.in}/js/**/*.{js,jsx}`,
         `!${config.dirs.in}/js/**/*.map`,
@@ -101,7 +101,7 @@ config.watch = {
         },
 
         {
-            files: config.js.in,
+            files: config.scripts.in,
             task: 'js'
         },
 

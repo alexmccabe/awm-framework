@@ -7,85 +7,50 @@
  */
 
 const argv        = require('yargs').argv;
-const browserSync = require('browser-sync');
-const glp         = require('gulp-load-plugins');
 const gulp        = require('gulp');
-const map         = require('vinyl-map2');
-const path        = require('path');
-const transfob    = require('transfob');
 const webpack     = require('webpack');
 const webpackStream = require('webpack-stream');
-const plugins     = glp();
 
-const del         = require('./clean');
+const Task = require('./Task');
 
-let config = require(path.join('..', 'config/gulp.config'));
+class Scripts extends Task {
+    constructor() {
+        super();
 
-function errorHandler() {
-    return plugins.plumber({
-        handleError: function (err) {
-            console.log(err);
-            this.emit('end');
+        this.task = 'scripts';
+        this.files = this.config[this.task].in;
+
+        if (this.config[this.task].clean || argv.clean) {
+            this.clean();
         }
-    });
-}
-
-function minify() {
-    if (config.isProduction) {
-        return plugins.uglify(config.js.uglifyOptions);
     }
 
-    return map(function () {});
-}
-
-function initSrcMaps() {
-    return plugins.sourcemaps.init({ loadMaps: true });
-}
-
-function filterSrcMaps() {
-    return transfob(function (file, enc, next) {
-        if (!/\.map$/.test(file.path)) {
-            this.push(file);
-        }
-
-        next();
-    });
-}
-
-function writeSrcMaps() {
-    return plugins.sourcemaps.write('.');
-}
-
-function compile () {
-    let stream = gulp.src(config.js.in)
-        .pipe(errorHandler())
-        .pipe(initSrcMaps())
-        .pipe(webpackStream(config.js.webpack, webpack))
-        .pipe(filterSrcMaps())
-        .pipe(minify())
-        .pipe(writeSrcMaps())
-        .pipe(gulp.dest(config.js.out));
-
-    if (browserSync.has('awm-framework')) {
-        browserSync.get('awm-framework').reload();
+    webpack() {
+        return webpackStream(this.config[this.task].webpack, webpack);
     }
 
-    return stream;
+    compile() {
+        var self = this;
+
+        return gulp
+            .src(this.files)
+            .pipe(this.onError())
+            .pipe(this.clean())
+            .pipe(this.webpack())
+            .pipe(this.initSrcMaps())
+            .pipe(this.filterSrcMaps())
+            .pipe(this.writeSrcMaps())
+            // .pipe(this.minify())
+            // .pipe(this.revision())
+            .pipe(this.write())
+            // .pipe(this.createManifest())
+            .pipe(this.onSuccess(true));
+    }
 }
 
-function build () {
-    return (config.clean || argv.clean) ? clean().then(compile) : compile();
-}
 
-function clean () {
-    return del([
-        path.resolve(`${config.js.out}`)
-    ]);
-}
+module.exports = function () {
+    let scripts = new Scripts;
 
-module.exports = {
-
-    build,
-    clean,
-
+    return scripts.compile();
 };

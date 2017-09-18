@@ -29,8 +29,8 @@ gulp.task('minify:css',
 /**
  * CSS tasks
  */
-gulp.task('js', tasks.js.build);
-gulp.task('clean:js', tasks.js.clean);
+gulp.task('js', tasks.scripts);
+// gulp.task('clean:js', tasks.js.clean);
 // gulp.task('minify:js',
 //     gulp.series('clean:js', 'js', tasks.js.minify)
 // );
