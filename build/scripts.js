@@ -19,10 +19,6 @@ class Scripts extends Task {
 
         this.task = 'scripts';
         this.files = this.config[this.task].in;
-
-        if (this.config[this.task].clean || argv.clean) {
-            this.clean();
-        }
     }
 
     webpack() {
@@ -30,8 +26,6 @@ class Scripts extends Task {
     }
 
     compile() {
-        var self = this;
-
         return gulp
             .src(this.files)
             .pipe(this.onError())

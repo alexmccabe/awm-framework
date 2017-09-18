@@ -1,5 +1,5 @@
 module.exports = {
-    css: require('./css'),
+    scss: require('./Scss'),
     scripts: require('./Scripts'),
     watch: require('./watch'),
     fonts: require('./static-files').fonts,

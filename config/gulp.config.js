@@ -28,16 +28,18 @@ config.manifest = {
 };
 
 
-config.css = {
+config.scss = {
     in: `${config.dirs.in}/scss/**/*.{css,scss}`,
     out: `${config.dirs.out}/assets/css`,
     clean: false,
 
-    rubySassOptions: { /* [1] */
-        lineNumbers: true,
-        sourcemap: true,
-        style: 'expanded'
-    },
+    // rubySassOptions: { /* [1] */
+    //     lineNumbers: true,
+    //     sourcemap: true,
+    //     style: 'expanded'
+    // },
+
+    gulpSassOptions: {},
 
     minSuffix: '.min',
 };
@@ -96,8 +98,8 @@ config.watch = {
 
     watchFiles: [
         {
-            files: config.css.in,
-            task: 'css'
+            files: config.scss.in,
+            task: 'scss'
         },
 
         {

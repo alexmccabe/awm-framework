@@ -20,11 +20,11 @@ gulp.task('reload', tasks.watch.reload);
 /**
  * CSS tasks
  */
-gulp.task('css', tasks.css.build);
-gulp.task('clean:css', tasks.css.clean);
-gulp.task('minify:css',
-    gulp.series('clean:css', 'css', tasks.css.minify)
-);
+gulp.task('scss', tasks.scss);
+// gulp.task('clean:css', tasks.css.clean);
+// gulp.task('minify:css',
+//     gulp.series('clean:css', 'css', tasks.css.minify)
+// );
 
 /**
  * CSS tasks
@@ -47,8 +47,8 @@ gulp.task('static', gulp.series('fonts', 'html', 'images'));
 /**
  * Build tasks
  */
-gulp.task('build:dev', gulp.series('static', 'css', 'js'));
-gulp.task('build:production', gulp.series('js', 'minify:css', 'static'));
+gulp.task('build:dev', gulp.series('static', 'scss', 'js'));
+gulp.task('build:production', gulp.series('js', 'scss', 'static'));
 
 /**
  * Default task

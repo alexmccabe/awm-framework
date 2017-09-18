@@ -32,9 +32,10 @@ class Task {
         dirs = (dirs.length) ? dirs : this.config[this.task].out;
 
         if (doClean) {
-            return this.createStream(function () {
-                del(dirs);
-            });
+            del(dirs)
+                .then(() => {
+                    return this.createStream();
+                });
         }
 
         return this.createStream();
@@ -65,10 +66,12 @@ class Task {
     }
 
     onSuccess(reload = false) {
-        if (reload) {
-            if (browserSync.has('awm-framework')) {
+        if (browserSync.has('awm-framework')) {
+            if (reload) {
                 browserSync.get('awm-framework').reload();
             }
+
+            browserSync.get('awm-framework').stream();
         }
 
         return this.createStream();
